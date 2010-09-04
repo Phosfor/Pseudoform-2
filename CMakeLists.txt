@@ -15,7 +15,7 @@ find_package(MyGUI REQUIRED)
 find_package(MyGUI_PLATFORM REQUIRED)
 find_package(Boost COMPONENTS filesystem system python date_time REQUIRED)
 set(PYTHON_INCLUDE /usr/include/python2.6)
-set(PYTHON_LIB /usr/lib/python2.6)
+set(PYTHON_LIB python2.6)
 
 add_definitions(-Wall)
 set(CMAKE_BUILD_TYPE "Debug")

@@ -13,7 +13,7 @@
 
 namespace Engine
 {
-    namespace Managers
+    /*namespace Managers
     {
         ConfigManager &GetConfig() { return ConfigManager::get_mutable_instance(); }
         LogManager &GetLog() { return LogManager::get_mutable_instance(); }
@@ -28,14 +28,14 @@ namespace Engine
         GraphicSystem &GetGraphic() { return GraphicSystem::get_mutable_instance(); }
         InputSystem &GetInput() { return InputSystem::get_mutable_instance(); }
         GuiSystem &GetGui() { return GuiSystem::get_mutable_instance(); }
-    }
+    }*/
 
-    namespace World
+    /*namespace World
     {
-        GameApplication &Application() { return GameApplication::get_mutable_instance(); }
+        //GameApplication &Application() { return GameApplication::get_mutable_instance(); }
         void setDimension(string &dimension) { Utils::get_mutable_instance().setDimension(dimension); }
         const float GetElapsed() { return gameApplicationConst.getElapsed(); }
-/*
+
         Object *MakeObject(const string& entityName)
         {
             return EntityManager::get_mutable_instance().MakeObject(entityName);
@@ -87,7 +87,7 @@ namespace Engine
         {
             return EntityManager::get_mutable_instance().GetCamera(cameraName);
         }
-*/
+
         unsigned int GetWidth() { return graphicSystem.getWindow()->getWidth(); }
         unsigned int GetHeight() { return graphicSystem.getWindow()->getHeight(); }
 
@@ -96,7 +96,7 @@ namespace Engine
         {
         	return GuiSystem::get_mutable_instance().handle()->findWidget<WidgetType>(name);
         }
-    }
+    }*/
 };
 
 #endif	/* ENGINE_HPP */

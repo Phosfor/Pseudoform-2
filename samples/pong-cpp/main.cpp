@@ -9,12 +9,14 @@ class MenuState : public State
         void init() {
             guiSystem.loadLayout("Pseudoform.layout");
 
-            World::findWidget<MyGUI::StaticImage>("ButtonPlay")->eventMouseButtonClick =
+            guiSystem.handle()->findWidget<MyGUI::StaticImage>("ButtonPlay")->eventMouseButtonClick =
                     MyGUI::newDelegate(this, &MenuState::ButtoPlayClicked);
 
             TRACK_VALUE_FLOAT("fps", &GameApplication::getFPS, &gameApplication);
-            //TRACK_VALUE_INT("batches", &Ogre::RenderWindow::getBatchCount, graphicSystem.getWindow());
+            TRACK_VALUE_INT("batches", &Ogre::RenderWindow::getBatchCount, graphicSystem.getWindow());
             TRACK_VALUE_INT("triangles", &Ogre::RenderWindow::getTriangleCount, graphicSystem.getWindow());
+
+            //object test = scriptSystem.loadModule("media/Scripts/test.py", "test");
         }
 
         void shutdown() {

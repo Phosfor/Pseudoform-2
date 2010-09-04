@@ -7,5 +7,6 @@
 #include "Systems/PhysicSystem.hpp"
 #include "Systems/SoundSystem.hpp"
 #include "Systems/System.hpp"
+#include "Systems/ScriptSystem.hpp"
 
 #endif

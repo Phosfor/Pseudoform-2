@@ -17,6 +17,8 @@ set(Pseudoform_srcs
     Systems/InputSystem.cpp
     Systems/GuiSystem.cpp
     Systems/SoundSystem.cpp
+
+    Systems/ScriptSystem.cpp
 )
 
 add_library(Pseudoform STATIC
@@ -31,7 +33,5 @@ target_link_libraries(Pseudoform
     ${MYGUI_LIBRARIES}
     ${MYGUI_PLATFORM_LIBRARIES}
     ${OIS_LIBRARIES}
+    ${PYTHON_LIB}
 )
-
-
-add_subdirectory("./Pyform")

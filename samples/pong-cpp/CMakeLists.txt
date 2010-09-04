@@ -8,4 +8,5 @@ add_executable(pong-cpp
 
 target_link_libraries(pong-cpp 
 	Pseudoform
+	${PYTHON_LIB}
 )

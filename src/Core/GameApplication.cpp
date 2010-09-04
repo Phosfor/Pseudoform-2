@@ -5,6 +5,7 @@ GameApplication::GameApplication()
     mSystemsList.push_back(new GraphicSystem());
     mSystemsList.push_back(new InputSystem());
     mSystemsList.push_back(new GuiSystem());
+    mSystemsList.push_back(new ScriptSystem());
 
     mRunning = false;
 
