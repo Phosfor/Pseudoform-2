@@ -1,15 +1,30 @@
 #include "Systems/ScriptSystem.hpp"
+//===================PYTHON-BINDS==================
+void _LOG(const string &str) //can't use LOG because it's a macro
+{
+    LOG("Python: "+str);
+}
+
+BOOST_PYTHON_MODULE(Pseudoform)
+{
+    def("LOG", _LOG);
+}
+
+//===================ScriptSystem==================
+
 template<> ScriptSystem* ISingleton<ScriptSystem>::mInstance = 0;
 
 ScriptSystem::ScriptSystem() {}
 ScriptSystem::~ScriptSystem()
 {
-    Py_Finalize();
+    //Py_Finalize();
 }
 
 void ScriptSystem::init()
 {
     try {
+        PyImport_AppendInittab( "Pseudoform", &initPseudoform );
+
         Py_Initialize();
 
         object main_module((
@@ -17,7 +32,11 @@ void ScriptSystem::init()
 
         main_namespace = main_module.attr("__dict__");
 
-        handle<> ignored(( PyRun_String( "print \"Hello, World\"",
+        //object pseudoform_module( (handle<>(PyImport_ImportModule("Pseudoform"))) );
+        //main_namespace["pseudoform"] = pseudoform_module;
+
+        handle<> ignored(( PyRun_String( "from Pseudoform import LOG\n"
+                                         "LOG(\"Hello, World\")",
                                          Py_file_input,
                                          main_namespace.ptr(),
                                          main_namespace.ptr() ) ));
