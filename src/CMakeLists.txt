@@ -20,7 +20,7 @@ set(Pseudoform_srcs
 )
 
 add_library(Pseudoform STATIC
-	${Pseudoform_srcs}
+    ${Pseudoform_srcs}
 )
 
 target_link_libraries(Pseudoform
@@ -32,3 +32,6 @@ target_link_libraries(Pseudoform
     ${MYGUI_PLATFORM_LIBRARIES}
     ${OIS_LIBRARIES}
 )
+
+
+add_subdirectory("./Pyform")

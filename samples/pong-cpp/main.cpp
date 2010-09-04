@@ -13,7 +13,7 @@ class MenuState : public State
                     MyGUI::newDelegate(this, &MenuState::ButtoPlayClicked);
 
             TRACK_VALUE_FLOAT("fps", &GameApplication::getFPS, &gameApplication);
-            TRACK_VALUE_INT("batches", &Ogre::RenderWindow::getBatchCount, graphicSystem.getWindow());
+            //TRACK_VALUE_INT("batches", &Ogre::RenderWindow::getBatchCount, graphicSystem.getWindow());
             TRACK_VALUE_INT("triangles", &Ogre::RenderWindow::getTriangleCount, graphicSystem.getWindow());
         }
 
@@ -43,7 +43,7 @@ class GameState : public State
         	MakeObject("Head")->loadFromFile("Entities/OgreHead.info")->dump();
         	//MakeObject("TestLight")->loadFromFile("Entities/LightObject.info")->setPosition(vec3(0, 50, 0));//->dump();
 
-            entityManager.DeleteAllEntities();
+            //entityManager.DeleteAllEntities();
         	//GetCamera("MainCamera")->dump();
         	//GetObject("ErrorObject")->dump();
         }

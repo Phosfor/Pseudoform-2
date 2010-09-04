@@ -14,6 +14,8 @@ find_package(Bullet REQUIRED)
 find_package(MyGUI REQUIRED)
 find_package(MyGUI_PLATFORM REQUIRED)
 find_package(Boost COMPONENTS filesystem system python date_time REQUIRED)
+set(PYTHON_INCLUDE /usr/include/python2.6)
+set(PYTHON_LIB /usr/lib/python2.6)
 
 add_definitions(-Wall)
 set(CMAKE_BUILD_TYPE "Debug")
@@ -30,6 +32,7 @@ include_directories(
         ${MYGUI_PLATFORM_INCLUDE_DIR}
 	${BULLET_INCLUDE_DIRS}
         ${OIS_INCLUDE_DIRS}
+	${PYTHON_INCLUDE}
 )
 
 add_subdirectory("${CMAKE_SOURCE_DIR}/src/")
