@@ -23,24 +23,34 @@ ScriptSystem::~ScriptSystem()
 void ScriptSystem::init()
 {
     try {
-        PyImport_AppendInittab( "Pseudoform", &initPseudoform );
+        PyImport_AppendInittab( (char *)"Pseudoform", &initPseudoform ); //I cast it to make the compiler happe -> no warnings
 
         Py_Initialize();
+        LOG("Python-interpreter inizialized");
 
         object main_module((
           handle<>(borrowed(PyImport_AddModule("__main__")))));
 
         main_namespace = main_module.attr("__dict__");
 
-        //object pseudoform_module( (handle<>(PyImport_ImportModule("Pseudoform"))) );
-        //main_namespace["pseudoform"] = pseudoform_module;
+        exec(  ("import sys\n"
+                "sys.path.append(\""+
+                CONFIG("script.path", string, "media/Scripts")+"\")").c_str(),
+                main_namespace,
+                main_namespace );
+        LOG("Added script path to sys.path");
 
-        handle<> ignored(( PyRun_String( "from Pseudoform import LOG\n"
-                                         "LOG(\"Hello, World\")",
-                                         Py_file_input,
-                                         main_namespace.ptr(),
-                                         main_namespace.ptr() ) ));
+
+        //You can use this or the python-version ("import testIt")
+        main_namespace["testIt"] = import("testIt");
+
+        exec(   "from Pseudoform import LOG\n"
+                //"import testIt\n"
+                "LOG(testIt.returnSTH())",
+                main_namespace,
+                main_namespace );
     } catch( error_already_set ) {
+        LOG("A Python-error accured while initialising ScriptSystem");
         PyErr_Print();
     }
 
