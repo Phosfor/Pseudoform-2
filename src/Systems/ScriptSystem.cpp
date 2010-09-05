@@ -65,7 +65,7 @@ object ScriptSystem::loadModule(const string &name)
     {
         LOG("ERROR: Couldn't load Python-module "+name);
         PyErr_Print();
-        return (object().attr("__dict__")["FAIL"] = 1);
+        return object();
     }
 }
 
