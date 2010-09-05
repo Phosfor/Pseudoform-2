@@ -42,7 +42,7 @@ void ScriptSystem::init()
 
 
         //You can use this or the python-version ("import testIt")
-        main_namespace["testIt"] = import("testIt");
+        main_namespace["testIt"] = loadModule("testIt");
 
         exec(   "from Pseudoform import LOG\n"
                 //"import testIt\n"
@@ -56,19 +56,18 @@ void ScriptSystem::init()
 
 }
 
-/*object ScriptSystem::loadModule(const string &path, const string &name)
+object ScriptSystem::loadModule(const string &name)
 {
     try {
-        // If path is /Users/whatever/blah/foo.py
-
+        return import(str::str(name));
     }
     catch( error_already_set )
     {
-        LOG("ERROR: Couldn't load Python-module");
+        LOG("ERROR: Couldn't load Python-module "+name);
         PyErr_Print();
         return (object().attr("__dict__")["FAIL"] = 1);
     }
-}*/
+}
 
 
 void ScriptSystem::update(float elapsed) {}

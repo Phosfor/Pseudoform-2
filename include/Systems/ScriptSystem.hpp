@@ -18,7 +18,7 @@ class ScriptSystem : public ISystem, public ISingleton<ScriptSystem>
         ScriptSystem();
         ~ScriptSystem();
 
-        //object loadModule(const string &path, const string &name);
+        object loadModule(const string &name);
 
         void init();
         void update(float elapsed);

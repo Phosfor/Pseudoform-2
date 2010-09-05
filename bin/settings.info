@@ -27,6 +27,11 @@ engine
 	logFilename "Engine.log"
 }
 
+script
+{
+    path "media/Scripts"
+}
+
 resources
 {
     MediaFolder "media/"
